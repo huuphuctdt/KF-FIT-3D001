@@ -7,6 +7,7 @@ use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductCategory;
@@ -56,6 +57,8 @@ Route::post('/dangxuat', [UserController::class, 'dangxuat'])->name('dangxuat');
 Route::prefix('admin')->middleware('is.admin')->group(function () {
 
     // Route::resource('product', ProductController::class);
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/product/list', [ProductController::class, 'index'])->name('admin.product.list');
 
